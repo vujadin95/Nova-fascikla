@@ -17,6 +17,7 @@
   --c-UseOfEnglish-light: #f7c1a8;
   --c-Writing-light: #dfbdda;
   --c-Exams-light: #bde1b2;
+  --c-gray: #838383;
 }
 
 html {
@@ -27,6 +28,8 @@ html {
 header {
   background-image: url(./images/hero-img.jpg);
   min-height: 100vh;
+  background-size: cover;
+  background-position: center;
 }
 
 nav {
@@ -38,7 +41,6 @@ nav {
 }
 
 .logo-container {
-
   display: flex;
   align-items: center;
   gap: 0.2em;
@@ -59,6 +61,7 @@ nav {
 .navbar>li {
   list-style-type: none;
   position: relative;
+  margin: 0 0.6rem;
 }
 
 .navbar>li>a {
@@ -69,7 +72,8 @@ nav {
   padding: 0.5em;
 }
 
-.navbar li:nth-child(1) .grammar:hover {
+
+.navbar li:nth-child(1) a:hover {
   color: var(--c-Grammar);
 }
 
@@ -131,11 +135,24 @@ nav {
   font-size: 1.5rem;
   border-radius: 20px;
   box-shadow: 0px 2px 16px 1px #474747db;
-  color: rebeccapurple;
+  animation: show .5s ease;
+  top: 30px;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    top: 20px;
+  }
+
+  to {
+    opacity: 1;
+    top: 30px;
+  }
 }
 
 .dropdown-item {
-  color: black;
+  color: var(--c-gray);
   display: flex;
   align-items: center;
   gap: 5px;
@@ -143,14 +160,16 @@ nav {
   padding: 12.5px 32px;
 }
 
-.active .dropdown-item:hover {
+.dropdown-item:hover {
   color: inherit;
+  background-color: #eaeaea;
 }
 
 .medal-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: inherit;
 }
 
 .medal-icon {
@@ -159,8 +178,6 @@ nav {
 
 .medal-text {
   position: absolute;
-  color: var(--c-Grammar);
-  /* i have to add color from JS*/
 }
 
 .medal-num-lvl {
@@ -176,10 +193,6 @@ nav {
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
 }
-
-/* .dropdown-item:hover {
-  background-color: rgb(228, 222, 222);
-} */
 
 .modal-text-lvl {
   white-space: nowrap;

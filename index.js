@@ -1,36 +1,59 @@
-const navbarElement = document.getElementsByClassName("navbar");
-const dropdownElement = document.getElementsByClassName("dropdown-menu");
+import { navbarData } from "./data.js";
+const navbarElement = document.getElementById("navbar").children;
 
-console.log(navbarElement);
-console.log(navbarElement[0].children);
-const liElements = navbarElement[0].children;
-
-for (let i = 0; i < liElements.length; i++) {
-  liElements[i].addEventListener("mouseover", function (e) {
-    if (liElements[i].children[1]) {
-      liElements[i].children[1].classList.add("active");
-
-      let vuja = document.getElementsByClassName("active")[0].children[3];
-      console.log(vuja);
-      vuja.addEventListener("mouseover", function () {
-        vuja.style.color = "red";
-      });
+for (let i = 0; i < navbarElement.length; i++) {
+  navbarElement[i].addEventListener("mouseover", function (e) {
+    if (e.target.id) {
+      if (!document.getElementsByClassName("active")[0]) {
+        renderMenu(e.target.id, i);
+      }
     }
   });
-  liElements[i].addEventListener("mouseleave", function () {
-    if (liElements[i].children[1]) {
-      liElements[i].children[1].classList.remove("active");
-    }
+  navbarElement[i].addEventListener("mouseleave", function (e) {
+    document.querySelector(".active").remove();
   });
 }
 
-// navbarElement[0].children.forEach((element) => {
-//   console.log(element);
-//   element.addEventListener("mouseover", function (e) {
-//     console.log(element);
-//     document.getElementById("gremmar").style.display = "flex";
-//   });
-//   element.addEventListener("mouseleave", function (e) {
-//     document.getElementById("gremmar").style.display = "none";
-//   });
-// });
+function renderMenu(id, i) {
+  const filteredData = navbarData.filter((item) => item.listItem === id);
+  const divEl = document.createElement("div");
+  divEl.classList.add("active");
+  divEl.innerHTML = `
+            <a class="dropdown-item" href="#">
+              <div class="medal-container">
+                <img class="medal-icon" src=${filteredData[0].img} />
+                <p class="medal-text" style='color: ${filteredData[0].color}'>A<span class="medal-num-lvl">1</span></p>
+              </div>
+              <p class="modal-text-lvl">Elementary</p>
+            </a>
+            <a class="dropdown-item" href="#">
+              <div class="medal-container">
+                <img class="medal-icon" src=${filteredData[0].img} />
+                <p class="medal-text" style='color: ${filteredData[0].color}'>A<span class="medal-num-lvl">2</span></p>
+              </div>
+              <p class="modal-text-lvl">Pre-intermediate</p>
+            </a>
+            <a class="dropdown-item" href="#">
+              <div class="medal-container">
+                <img class="medal-icon" src=${filteredData[0].img} />
+                <p class="medal-text" style='color: ${filteredData[0].color}'>B<span class="medal-num-lvl">1</span></p>
+              </div>
+              <p class="modal-text-lvl">Intermediate</p>
+            </a>
+            <a class="dropdown-item" href="#">
+              <div class="medal-container">
+                <img class="medal-icon" src=${filteredData[0].img} />
+                <p class="medal-text" style='color: ${filteredData[0].color}'>B<span class="medal-num-lvl">1+</span></p>
+              </div>
+              <p class="modal-text-lvl">Upper-intermediate</p>
+            </a>
+            <a class="dropdown-item" href="#">
+              <div class="medal-container">
+                <img class="medal-icon" src=${filteredData[0].img} />
+                <p class="medal-text" style='color: ${filteredData[0].color}'>B<span class="medal-num-lvl">2</span></p>
+              </div>
+              <p class="modal-text-lvl">Pre-advanced</p>
+            </a>
+  `;
+  navbarElement[i].appendChild(divEl);
+}
