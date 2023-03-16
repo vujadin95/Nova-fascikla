@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --c-Grammar: #1a8ec1;
+  --c-Listening: #fecc00;
+  --c-Reading: #ed1c24;
+  --c-UseOfEnglish: #ec6825;
+  --c-Writing: #a84d98;
+  --c-Exams: #50af31;
+  --c-Grammar-light: #add6e8;
+  --c-Listening-light: #ffe89b;
+  --c-Reading-light: #f8a1a6;
+  --c-UseOfEnglish-light: #f7c1a8;
+  --c-Writing-light: #dfbdda;
+  --c-Exams-light: #bde1b2;
+}
+
+html {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+}
+
+header {
+  background-image: url(./images/hero-img.jpg);
+  min-height: 100vh;
+}
+
+nav {
+  padding: 1.4em 1.6em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.logo-container i {
+  color: rgb(9, 184, 9);
+}
+
+.navbar {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.6rem;
+}
+
+.navbar>li {
+  list-style-type: none;
+  position: relative;
+}
+
+.navbar>li>a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  padding: 0.5em;
+}
+
+.navbar li:nth-child(1) .grammar:hover {
+  color: var(--c-Grammar);
+}
+
+.navbar li:nth-child(2) a:hover {
+  color: var(--c-Listening);
+}
+
+.navbar li:nth-child(3) a:hover {
+  color: var(--c-Reading);
+}
+
+.navbar li:nth-child(4) a:hover {
+  color: var(--c-UseOfEnglish);
+}
+
+.navbar li:nth-child(5) a:hover {
+  color: var(--c-Writing);
+}
+
+.navbar li:nth-child(6) a:hover {
+  color: var(--c-Exams);
+}
+
+.search-login-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.search-container {
+  font-size: 3rem;
+  color: white;
+  padding: 0.2em;
+  cursor: pointer;
+}
+
+.login-container {
+  font-size: 1.6rem;
+  border: 2px solid white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.login-container a {
+  text-decoration: none;
+  color: white;
+  padding: 4px 6px;
+}
+
+.dropdown-menu {
+  display: none;
+}
+
+.active {
+  position: absolute;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0px 2px 16px 1px #474747db;
+  color: rebeccapurple;
+}
+
+.dropdown-item {
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  padding: 12.5px 32px;
+}
+
+.active .dropdown-item:hover {
+  color: inherit;
+}
+
+.medal-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.medal-icon {
+  width: 35px;
+}
+
+.medal-text {
+  position: absolute;
+  color: var(--c-Grammar);
+  /* i have to add color from JS*/
+}
+
+.medal-num-lvl {
+  font-size: 1rem;
+}
+
+.dropdown-item:nth-child(1) {
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.dropdown-item:nth-child(5) {
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+/* .dropdown-item:hover {
+  background-color: rgb(228, 222, 222);
+} */
+
+.modal-text-lvl {
+  white-space: nowrap;
+}
