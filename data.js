@@ -28,6 +28,11 @@ const navbarData = [
     listItem: "exams",
     img: "./images/ico-exams.png",
     color: "#50af31",
+    A2: "Key (KET)",
+    B1: "Prelimenary (PET)",
+    B2: "First (FCE)",
+    ielt: "IELTS",
+    toe: "TOEFL iBT",
   },
 ];
 

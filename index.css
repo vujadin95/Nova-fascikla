@@ -23,6 +23,7 @@
 html {
   font-family: 'Poppins', sans-serif;
   font-size: 10px;
+  scroll-behavior: smooth;
 }
 
 header {
@@ -30,22 +31,31 @@ header {
   min-height: 100vh;
   background-size: cover;
   background-position: center;
+  display: flex;
+  align-items: center;
 }
 
 nav {
-  padding: 1.4em 1.6em;
+  padding: 1.4em 1em 0;
+  margin-bottom: 1.6em;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: background-color 0.5s ease;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
   gap: 0.2em;
-  font-size: 3rem;
+  font-size: 2.5rem;
+  line-height: 1;
   cursor: pointer;
+  color: white;
 }
 
 .logo-container i {
@@ -53,25 +63,21 @@ nav {
 }
 
 .navbar {
-  display: flex;
-  gap: 0.5rem;
-  font-size: 1.6rem;
+  display: none;
 }
 
 .navbar>li {
   list-style-type: none;
   position: relative;
-  margin: 0 0.6rem;
+  margin: 0.5em 0.2em;
 }
 
 .navbar>li>a {
   text-decoration: none;
   color: white;
   font-weight: 600;
-  letter-spacing: 1.5px;
-  padding: 0.5em;
+  padding: 1rem;
 }
-
 
 .navbar li:nth-child(1) a:hover {
   color: var(--c-Grammar);
@@ -100,14 +106,16 @@ nav {
 .search-login-container {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .search-container {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: white;
-  padding: 0.2em;
+  padding: 0 0.2em;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .login-container {
@@ -132,22 +140,22 @@ nav {
   background-color: white;
   display: flex;
   flex-direction: column;
-  font-size: 1.5rem;
   border-radius: 20px;
   box-shadow: 0px 2px 16px 1px #474747db;
   animation: show .5s ease;
-  top: 30px;
+  top: 2em;
+  left: -0.5em;
 }
 
 @keyframes show {
   from {
     opacity: 0;
-    top: 20px;
+    top: 50px;
   }
 
   to {
     opacity: 1;
-    top: 30px;
+    top: 2em;
   }
 }
 
@@ -157,7 +165,7 @@ nav {
   align-items: center;
   gap: 5px;
   text-decoration: none;
-  padding: 12.5px 32px;
+  padding: 12.5px 20px;
 }
 
 .dropdown-item:hover {
@@ -196,4 +204,91 @@ nav {
 
 .modal-text-lvl {
   white-space: nowrap;
+}
+
+.hero-container {
+  padding: 43.2px;
+  color: white;
+}
+
+.hero-heading {
+  font-size: 4.4rem;
+  margin-top: 72px;
+}
+
+.hero-heading2 {
+  font-size: 3.5rem;
+  color: var(--c-Exams);
+  display: inline-block;
+}
+
+.hero-text {
+  font-size: 1.7rem;
+  max-width: 40vw;
+  font-weight: 300;
+}
+
+main {
+  min-height: 100vh;
+}
+
+.none {
+  display: none;
+}
+
+.navbar-background {
+  background-color: #37424e;
+  transition: all 0.5s ease;
+}
+
+/* styling menu button for smaller screens */
+.menu-button {
+  width: 32px;
+  height: 23px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.line {
+  height: 4px;
+  background-color: #50af31;
+  width: 100%;
+  border-radius: 10px;
+}
+
+@media(width >=1120px) {
+  .logo-container {
+    font-size: 3rem;
+  }
+
+  .navbar {
+    font-size: 1.6rem;
+  }
+
+  .search-container {
+    font-size: 3rem;
+  }
+
+  nav {
+    padding: 1.4em 1.6em 0;
+  }
+
+  .navbar>li {
+    margin: 0.5em 0.4em;
+  }
+}
+
+@media(width >=900px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+  }
+
+  .menu-button {
+    display: none;
+  }
 }
