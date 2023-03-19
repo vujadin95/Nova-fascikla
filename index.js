@@ -1,74 +1,64 @@
 import { navbarData } from "./data.js";
-const navbarElement = document.getElementById("navbar").children;
+const navbarElement = document.querySelectorAll(".navbar-item");
 
-for (let i = 0; i < navbarElement.length; i++) {
-  navbarElement[i].addEventListener("mouseover", function (e) {
+// creating sub-navigation link when user hovers over main navigations links
+navbarElement.forEach((item, index) => {
+  item.addEventListener("mouseover", function (e) {
     if (e.target.id) {
       if (!document.getElementsByClassName("active")[0]) {
-        renderMenu(e.target.id, i);
+        renderMenu(e.target.id, index);
       }
     }
   });
-  navbarElement[i].addEventListener("mouseleave", function (e) {
+  item.addEventListener("mouseleave", function () {
     document.querySelector(".active").remove();
   });
-}
+});
 
-function renderMenu(id, i) {
-  const filteredData = navbarData.filter((item) => item.listItem === id);
+function renderMenu(id, index) {
+  const filteredData = navbarData.filter((item) => item.listItem === id)[0];
   const divEl = document.createElement("div");
   divEl.classList.add("active");
+
+  const levels = [
+    "Elementarty",
+    "Pre-intermediate",
+    "Intermediate",
+    "Upper-intermediate",
+    "Pre-advanced",
+  ];
+
   let elementary = "Elementary";
   let preIntermediate = "Pre-intermediate";
   let intermediate = "Intermediate";
   let upperIntermediate = "Upper-intermediate";
   let preAdvanced = "Pre-advanced";
   if (id === "exams") {
-    elementary = filteredData[0].A2;
-    preIntermediate = filteredData[0].B1;
-    intermediate = filteredData[0].B2;
-    upperIntermediate = filteredData[0].ielt;
-    preAdvanced = filteredData[0].toe;
+    elementary = filteredData.A2;
+    preIntermediate = filteredData.B1;
+    intermediate = filteredData.B2;
+    upperIntermediate = filteredData.ielt;
+    preAdvanced = filteredData.toe;
   }
-  divEl.innerHTML = `
+  let renderText = "";
+
+  levels.forEach(
+    (lvl) =>
+      (renderText += `
             <a class="dropdown-item" href="#">
               <div class="medal-container">
-                <img class="medal-icon" src=${filteredData[0].img} />
-                <p class="medal-text" style='color: ${filteredData[0].color}'>A<span class="medal-num-lvl">1</span></p>
+                <img class="medal-icon" src=${filteredData.img} />
+                <p class="medal-text" style='color: ${filteredData.color}'>A<span class="medal-num-lvl">1</span></p>
               </div>
-              <p class="modal-text-lvl">${elementary}</p>
+              <p class="modal-text-lvl">${lvl}</p>
             </a>
-            <a class="dropdown-item" href="#">
-              <div class="medal-container">
-                <img class="medal-icon" src=${filteredData[0].img} />
-                <p class="medal-text" style='color: ${filteredData[0].color}'>A<span class="medal-num-lvl">2</span></p>
-              </div>
-              <p class="modal-text-lvl">${preIntermediate}</p>
-            </a>
-            <a class="dropdown-item" href="#">
-              <div class="medal-container">
-                <img class="medal-icon" src=${filteredData[0].img} />
-                <p class="medal-text" style='color: ${filteredData[0].color}'>B<span class="medal-num-lvl">1</span></p>
-              </div>
-              <p class="modal-text-lvl">${intermediate}</p>
-            </a>
-            <a class="dropdown-item" href="#">
-              <div class="medal-container">
-                <img class="medal-icon" src=${filteredData[0].img} />
-                <p class="medal-text" style='color: ${filteredData[0].color}'>B<span class="medal-num-lvl">1+</span></p>
-              </div>
-              <p class="modal-text-lvl">${upperIntermediate}</p>
-            </a>
-            <a class="dropdown-item" href="#">
-              <div class="medal-container">
-                <img class="medal-icon" src=${filteredData[0].img} />
-                <p class="medal-text" style='color: ${filteredData[0].color}'>B<span class="medal-num-lvl">2</span></p>
-              </div>
-              <p class="modal-text-lvl">${preAdvanced}</p>
-            </a>
-  `;
-  navbarElement[i].appendChild(divEl);
+  `)
+  );
+
+  divEl.innerHTML = renderText;
+  document.getElementById("navbar").children[index].appendChild(divEl);
 }
+
 // handling navigation menu to show and hide on mouse scroll
 function fadeOutOnScroll(element) {
   if (!element) {
@@ -97,3 +87,15 @@ function scrollHandler() {
 }
 
 window.addEventListener("scroll", scrollHandler);
+
+// creating hamburger manu for smaller screens
+const menuBtn = document.getElementById("menu-button");
+
+function handleMenuBtnClick() {
+  menuBtn.children[0].classList.toggle("line1");
+  menuBtn.children[1].classList.toggle("line2");
+  menuBtn.children[2].classList.toggle("line3");
+  document.getElementById("navbar").classList.toggle("navbar-column");
+}
+
+menuBtn.addEventListener("click", handleMenuBtnClick);
