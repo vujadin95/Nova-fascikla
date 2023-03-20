@@ -155,8 +155,9 @@ nav {
 
   to {
     opacity: 1;
-    top: 2.em;
+    top: 2em;
   }
+
 }
 
 .dropdown-item {
@@ -279,34 +280,70 @@ main {
 /* END styling hamburger menu button for smaller screens */
 
 .navbar-column {
+  font-size: 1.6rem;
+  background-color: #37424e;
+  width: 100%;
+  height: 100vh;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
+  align-items: flex-start;
   position: fixed;
-  top: 42px;
+  top: 50px;
   left: 0;
-  font-size: 2rem;
-  background-color: #1a8ec1;
+  animation: slide 0.35s ease;
+
 }
 
-.navbar-column>li>a {
+@keyframes slide {
+  from {
+    /* transform: scaleX(0); */
+    width: 0;
+  }
+
+  to {
+    /* transform: scaleY(1); */
+    width: 100%;
+  }
+}
+
+.navbar-column .navbar-item {
+  border-bottom: 1px solid black;
   width: 100%;
-  background-color: green;
+  padding: 20px;
+  cursor: pointer;
 }
 
+.navbar-column .navbar-item>a {
+  display: block;
+  width: 100%;
+  padding: 0;
+}
 
-/* .active {
+.navbar-column .navbar-item .active {
   position: relative;
+  text-shadow: unset;
   border-radius: 0;
   top: 0;
-  left: 0;
-  animation: unset;
-  box-shadow: unset;
-  background-color: unset;
-} */
+}
+
+.navbar-column .navbar-item .active .dropdown-item {
+  border-radius: 0;
+}
+
+.hidden {
+  overflow: hidden;
+}
 
 
+@media(max-width: 900px) {
+  .nabar-slide {
+    background-color: #37424e;
+    padding: 10px;
+    border-bottom: 1px solid black;
+    z-index: 1;
+  }
+}
 
 @media(width >=900px) {
   .navbar {

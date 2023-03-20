@@ -37,3 +37,16 @@
 //             <p class="modal-text-lvl">${preAdvanced}</p>
 //           </a>
 // `;
+
+// let elementary = "Elementary";
+// let preIntermediate = "Pre-intermediate";
+// let intermediate = "Intermediate";
+// let upperIntermediate = "Upper-intermediate";
+// let preAdvanced = "Pre-advanced";
+// if (id === "exams") {
+//   elementary = filteredData.A2;
+//   preIntermediate = filteredData.B1;
+//   intermediate = filteredData.B2;
+//   upperIntermediate = filteredData.ielt;
+//   preAdvanced = filteredData.toe;
+// }
